@@ -7,14 +7,31 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  var inputs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvzxyz0123456789!@#$%^&*()-_=+,<.>/?";
-
   function generatePassword() {
-    var inputs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvzxyz0123456789!@#$%^&*()-_=+,<.>/?";
+    var caplet = "ABCDEFGHIJKLMNOPQRSTUVWXY";
+    var lowlet = "abcdefghijklmnopqrstuvzxyz";
+    var inpsym = "!@#$%^&*()-_=+,<.>/?"
+    var inpNumbs = "0123456789";
+    var inputs = [];
+    var upper = confirm("Do you want Uppercase letters?")
+    if (upper == true) {
+      inputs += caplet;
+    }
+    var lower = confirm("Do you want lowercase letters")
+    if (lower == true) {
+      inputs += lowlet;
+    }
+    var Sym = confirm("Do you want symbols?")
+    if (Sym == true) {
+      inputs += inpsym;
+    }
+    var Nums = confirm("Do you want numbers?")
+    if (Nums == true) {
+      inputs += inpNumbs;
+    }
     var number = prompt("How long of a password do you want?", "Enter a number between 8 and 128");
-    var types = confirm("Your password should contain lowercase, uppercase, numeric, and special characters.")
-    if (types == false || number < 8 || number > 128) {
-      alert("Your password should contain all of the above as well as fall between the number limits.  Please try again.")
+    if (number < 8 || number > 128) {
+      alert("Your password should fall between the number limits.  Please try again.")
        }  
        else {
         index = Math.floor(Math.random()*inputs.length);
